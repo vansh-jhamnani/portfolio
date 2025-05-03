@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Vansh | Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #fff, #ffe7cd);
+      color: #333;
+    }
+
+    nav {
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .brand img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ffa500;
+    }
+
+    .brand span {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    ul.nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    ul.nav-links li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 5px;
+      transition: 0.3s ease;
+    }
+
+    ul.nav-links li a:hover {
+      background-color: #ffdfb3;
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* ABOUT SECTION */
+    .about-section {
+      background: #fffbe9;
+      border-radius: 15px;
+      padding: 60px 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .about-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      color: #444;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+
+    .about-text ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .about-text ul li {
+      margin: 8px 0;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Updated Project Card Styles */
+    .projects-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .project-card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      height: 400px;
+      transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card h3 {
+      font-size: 1.6rem;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .project-card p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .project-card a {
+      color: #0073e6;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .project-card a:hover {
+      text-decoration: underline;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+      filter: brightness(1.1) drop-shadow(0 0 15px #ffa94d);
+    }
+
+    /* SKILLS */
+    .skill {
+      background: #fff;
+      margin-bottom: 1.5rem;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .progress-bar-container {
+      background: #eee;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+
+    .progress-bar {
+      height: 20px;
+      background: #4caf50;
+      color: white;
+      text-align: center;
+      line-height: 20px;
+    }
+
+    .skill:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* CONTACT */
+    .contact-section {
+      background: #fff8ee;
+    }
+
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      justify-content: center;
+    }
+
+    .contact-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form {
+      flex: 1 1 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form label {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      resize: none;
+      background: #fff;
+      transition: 0.3s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #ffa94d;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 175, 75, 0.2);
+    }
+
+    .contact-form button {
+      padding: 12px;
+      border: none;
+      background: #ffa94d;
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #ff922b;
+    }
+
+    a {
+      color: #0073e6;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="hero.html" class="brand">
+      <img src="picture2.jpg" alt="Profile Icon" />
+      <span>Vansh</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ABOUT -->
+  <section id="about" style="background-color: #fffefb;">
+    <h2 style="text-align:center; font-size: 2.2rem; margin-bottom: 2rem;">About Me</h2>
+    <div
+      style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: center; max-width: 1000px; margin: 0 auto;">
+
+      <!-- Left Text Section -->
+      <div style="flex: 1 1 400px;">
+        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">🚀 Turning ideas into reality through code</h3>
+        <p style="font-size: 1.05rem; line-height: 1.9; color: #555;">
+          Hi, I'm <strong style="color: #ff8c00;">Vansh</strong> — a tech enthusiast and passionate programmer who loves
+          building innovative and meaningful projects. I specialize in a diverse tech stack including
+          <strong style="color: #4caf50;">Python</strong>, <strong style="color: #0073e6;">C</strong>,
+          <strong style="color: #2965f1;">CSS</strong>, and <strong style="color: #6a1b9a;">MySQL</strong>. 
+        </p>
+        <p style="margin-top: 15px; color: #666; line-height: 1.5;">
+          I'm always exploring new technologies, solving real-world problems, and crafting smooth, interactive experiences.
+          Beyond coding, I enjoy <strong>listening to music</strong>, <strong>designing</strong>, and
+          <strong>exploring creative ideas</strong>.
+        </p>
+        <a href="https://drive.google.com/file/d/1xrStPBawRR1_17iLzsy7lUT65fds0i1v/view?usp=drive_link"
+          style="display: inline-block; margin-top: 20px; padding: 12px 20px; background-color: #ffa94d; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.3s;">
+          Download Resume
+        </a>
+      </div>
+
+      <!-- Right Feature Section -->
+      <div style="flex: 1 1 300px; display: grid; gap: 15px;">
+        <div
+          style="background: #fff5e6; padding: 15px 20px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); font-weight: 500;">
+          🧠 <strong>Problem Solver:</strong> I enjoy tackling challenges with logical thinking, pattern recognition, and DSA skills.
+        </div>
+        <div
+          style="background: #eafaf1; padding: 15px 20px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); font-weight: 500;">
+          🐍 <strong>Python Programmer:</strong> From scripting to GUI apps, I use Python with libraries like Tkinter, Pandas, CSV, and Numpy to build efficient solutions.
+        </div>
+        <div
+          style="background: #eef6ff; padding: 15px 20px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); font-weight: 500;">
+          🗄️ <strong>Database Engineer:</strong> I connect Python with MySQL and understand core DBMS concepts.
+        </div>
+        <div
+          style="background: #fff7f0; padding: 15px 20px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); font-weight: 500;">
+          🎧 <strong>Beyond Coding:</strong> Music, visual storytelling, and curiosity keep me inspired and balanced.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+<section id="projects" style="padding: 80px 20px; background-color: #f4f7fa;">
+  <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 2rem;">🚀 My Projects</h2>
+  <div class="projects-container" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+
+    <!-- Project Card 1 -->
+    <div class="project-card" style="background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 300px; text-align: center;">
+      <h3 style="margin-bottom: 10px;">Project Allocation System</h3>
+      <p style="color: #555;">A Python-based system with Tkinter to automate project assignments, connecting students, teachers, and admins for better coordination and transparency.</p>
+      <a href="#" style="color: #0073e6; text-decoration: none; font-weight: 500; display: inline-block; margin-top: 10px;">View Project</a>
+    </div>
+
+    <!-- Project Card 2 -->
+    <div class="project-card" style="background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 300px; text-align: center;">
+      <h3 style="margin-bottom: 10px;">Shop Management System</h3>
+      <p style="color: #555;">A command-line-based shop management system using Python and MySQL for managing products, sales, and inventory, with CRUD operations.</p>
+      <a href="#" style="color: #0073e6; text-decoration: none; font-weight: 500; display: inline-block; margin-top: 10px;">View Project</a>
+    </div>
+
+    <!-- Project Card 3 -->
+    <div class="project-card" style="background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 300px; text-align: center;">
+      <h3 style="margin-bottom: 10px;">Word-Guessing Game</h3>
+      <p style="color: #555;">A console-based Python game where players guess a hidden word by suggesting letters, with feedback on each guess and a win/loss outcome.</p>
+      <a href="#" style="color: #0073e6; text-decoration: none; font-weight: 500; display: inline-block; margin-top: 10px;">View Project</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 2rem;">Skills</h2>
+
+  <!-- Skill Categories -->
+  <div class="skill-category">
+    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Frontend</h3>
+
+    <div class="skill" style="display: flex; align-items: center; gap: 15px; transition: transform 0.3s;">
+      <img src="https://img.icons8.com/ios/50/000000/html-5.png" alt="HTML Icon" style="width: 30px; height: 30px;" />
+      <p style="font-size: 1.1rem; color: #444;">HTML</p>
+      <div class="progress-bar-container" style="flex-grow: 1; background: #eee; border-radius: 8px; overflow: hidden;">
+        <div class="progress-bar" style="width: 70%; background: #4caf50; text-align: center; color: white;">70%</div>
+      </div>
+    </div>
+
+    <div class="skill" style="display: flex; align-items: center; gap: 15px; transition: transform 0.3s;">
+      <img src="https://img.icons8.com/ios/50/000000/css3.png" alt="CSS Icon" style="width: 30px; height: 30px;" />
+      <p style="font-size: 1.1rem; color: #444;">CSS</p>
+      <div class="progress-bar-container" style="flex-grow: 1; background: #eee; border-radius: 8px; overflow: hidden;">
+        <div class="progress-bar" style="width: 60%; background: #4caf50; text-align: center; color: white;">60%</div>
+      </div>
+    </div>
+
+
+
+  <div class="skill-category">
+    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Backend & Data</h3>
+
+    <div class="skill" style="display: flex; align-items: center; gap: 15px; transition: transform 0.3s;">
+      <img src="https://img.icons8.com/ios/50/000000/python.png" alt="Python Icon" style="width: 30px; height: 30px;" />
+      <p style="font-size: 1.1rem; color: #444;">Python</p>
+      <div class="progress-bar-container" style="flex-grow: 1; background: #eee; border-radius: 8px; overflow: hidden;">
+        <div class="progress-bar" style="width: 75%; background: #4caf50; text-align: center; color: white;">75%</div>
+      </div>
+    </div>
+
+    <div class="skill" style="display: flex; align-items: center; gap: 15px; transition: transform 0.3s;">
+      <img src="https://img.icons8.com/ios/50/000000/mysql-logo.png" alt="MySQL Icon" style="width: 30px; height: 30px;" />
+      <p style="font-size: 1.1rem; color: #444;">MySQL</p>
+      <div class="progress-bar-container" style="flex-grow: 1; background: #eee; border-radius: 8px; overflow: hidden;">
+        <div class="progress-bar" style="width: 40%; background: #4caf50; text-align: center; color: white;">40%</div>
+      </div>
+    </div>
+
+    <div class="skill" style="display: flex; align-items: center; gap: 15px; transition: transform 0.3s;">
+      <img src="https://img.icons8.com/ios/50/000000/c.png" alt="C Icon" style="width: 30px; height: 30px;" />
+      <p style="font-size: 1.1rem; color: #444;">C</p>
+      <div class="progress-bar-container" style="flex-grow: 1; background: #eee; border-radius: 8px; overflow: hidden;">
+        <div class="progress-bar" style="width: 50%; background: #4caf50; text-align: center; color: white;">50%</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="skill-category">
+    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Tools</h3>
+
+    <div class="skill" style="display: flex; align-items: center; gap: 15px; transition: transform 0.3s;">
+      <img src="https://img.icons8.com/ios/50/000000/git.png" alt="Git Icon" style="width: 30px; height: 30px;" />
+      <p style="font-size: 1.1rem; color: #444;">Git & GitHub</p>
+      <div class="progress-bar-container" style="flex-grow: 1; background: #eee; border-radius: 8px; overflow: hidden;">
+        <div class="progress-bar" style="width: 70%; background: #4caf50; text-align: center; color: white;">70%</div>
+      </div>
+    </div>
+
+    <div class="skill" style="display: flex; align-items: center; gap: 15px; transition: transform 0.3s;">
+      <img src="https://img.icons8.com/ios/50/000000/visual-studio-code-2019.png" alt="VS Code Icon" style="width: 30px; height: 30px;" />
+      <p style="font-size: 1.1rem; color: #444;">VS Code</p>
+      <div class="progress-bar-container" style="flex-grow: 1; background: #eee; border-radius: 8px; overflow: hidden;">
+        <div class="progress-bar" style="width: 90%; background: #4caf50; text-align: center; color: white;">90%</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section" style="padding: 4rem 2rem; border-top: 3px solid #333;">
+  <h2 style="text-align: center; font-size: 2.4rem; margin-bottom: 1rem; color: #333;">Get in Touch</h2>
+  <p style="text-align: center; margin-bottom: 2rem; color: #666;">Feel free to reach out to me for any inquiries or collaboration opportunities.</p>
+
+  <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
+    <!-- Contact Form -->
+    <div style="flex: 1; min-width: 300px; max-width: 600px; background-color: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+      <form id="contact-form" action="https://formspree.io/f/xgvkanvl" method="POST">
+        <div style="margin-bottom: 1.5rem;">
+          <label for="name" style="display: block; font-size: 1rem; margin-bottom: 0.5rem; color: #444;">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required style="width: 100%; padding: 0.8rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 1.5rem;">
+          <label for="email" style="display: block; font-size: 1rem; margin-bottom: 0.5rem; color: #444;">Your Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required style="width: 100%; padding: 0.8rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 1.5rem;">
+          <label for="message" style="display: block; font-size: 1rem; margin-bottom: 0.5rem; color: #444;">Your Message</label>
+          <textarea id="message" name="message" placeholder="Write your message here..." required style="width: 100%; height: 150px; padding: 0.8rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+        </div>
+        <div style="text-align: center;">
+          <button type="submit" style="padding: 0.8rem 2rem; background-color: #4CAF50; color: white; font-size: 1.1rem; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s;">
+            Send Message
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Contact Details -->
+    <div style="flex: 1; min-width: 300px; max-width: 400px; padding: 2rem; background-color: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+      <h3 style="font-size: 1.6rem; margin-bottom: 1.5rem; color: #333;">Contact Information</h3>
+      <p><span style="font-size: 1.2rem; color: #4CAF50;">&#9993;</span> <strong>Email:</strong> jhamnanivansh@gmail.com</p>
+      <p><span style="font-size: 1.2rem; color: #4CAF50;">&#9742;</span> <strong>Phone:</strong> +91 9571929151</p>
+
+    <!-- Social Media Links -->
+    <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="#" target="_blank" style="font-size: 1.6rem; color: #0077b5; text-decoration: none; transition: color 0.3s;">LinkedIn</a>
+      <a href="https://github.com/vansh-jhamnani" target="_blank" style="font-size: 1.6rem; color: #333; text-decoration: none; transition: color 0.3s;">GitHub</a>
+      <a href="https://instagram.com/vanshsocial1" target="_blank" style="font-size: 1.6rem; color: #e4405f; text-decoration: none; transition: color 0.3s;">Instagram</a>
+    </div>
+
+
+      <!-- Image below the contact information -->
+      <div style="text-align: center; margin-top: 2rem;">
+        <img src="picture3.jpg" alt="Your Image" style="width: 100%; max-width: 300px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- SMOOTH SCROLL JS -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
